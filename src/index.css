@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap'); */
+
+@layer base {
+  :root {
+    /* Edumate Design System - Premium Fintech Palette */
+    --background: 0 0% 100%;
+    --foreground: 222 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 20% 15%;
+
+    /* Primary - Trust Blue */
+    --primary: 217 91% 60%;
+    --primary-light: 217 91% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Accent - Energy Orange */
+    --accent: 16 100% 60%;
+    --accent-light: 16 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 222 20% 15%;
+
+    /* Muted */
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    --shadow-strong: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --shadow-soft: 0 4px 20px -2px rgb(59 130 246 / 0.08);
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 98%;
+
+    --card: 222 40% 14%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 222 40% 14%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-light: 217 91% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 16 100% 60%;
+    --accent-light: 16 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 222 30% 22%;
+    --input: 222 30% 22%;
+    --ring: 217 91% 60%;
+
+    --shadow-soft: 0 4px 20px -2px rgb(59 130 246 / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphic Card Effect */
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-primary-light to-accent bg-clip-text text-transparent;
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .card-interactive {
+    @apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .card-premium {
+    @apply bg-gradient-to-br from-white to-blue-50/50 dark:from-slate-800 dark:to-blue-900/10 border-2 border-primary/20 dark:border-primary/30 rounded-2xl shadow-lg shadow-primary/10 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .card-featured {
+    @apply bg-gradient-to-br from-white to-orange-50/50 dark:from-slate-800 dark:to-orange-900/10 border-2 border-accent/20 dark:border-accent/30 rounded-2xl shadow-lg shadow-accent/10 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Sidebar Item */
+  .sidebar-item {
+    @apply relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300;
+  }
+
+  /* Soft Shadow */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Pulse Animation for Status Indicators */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Font Display for Headers */
+  .font-display {
+    font-family: 'Sora', 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  /* Chat Bubble Styles */
+  .chat-bubble-user {
+    @apply bg-gradient-to-br from-primary via-primary-light to-primary text-white rounded-2xl rounded-tr-md px-5 py-3.5 shadow-lg shadow-primary/20;
+  }
+
+  .chat-bubble-ai {
+    @apply bg-gradient-to-br from-card to-primary/5 text-foreground rounded-2xl rounded-tl-md px-5 py-3.5 border border-border/50 shadow-md backdrop-blur-lg;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Scrollbar Styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-slate-100 dark:bg-slate-800 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-600 rounded-full hover:bg-slate-400 dark:hover:bg-slate-500;
+  }
+
+  /* Text Truncate Multi-line */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Additional Button Styles - When I added explore-loan route and its page and herosection */
+
+@layer components {
+  /* Primary Accent Button */
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white;
+    @apply bg-gradient-to-r from-accent to-accent-light;
+    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-xl;
+    @apply active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold;
+    @apply bg-transparent border-2 border-primary text-primary;
+    @apply transition-all duration-300 hover:bg-primary hover:text-white;
+    @apply active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white;
+    @apply bg-gradient-to-r from-primary to-primary-light;
+    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-primary/30;
+    @apply active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold;
+    @apply bg-secondary text-secondary-foreground;
+    @apply transition-all duration-300 hover:bg-secondary/80;
+    @apply active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold;
+    @apply bg-transparent text-foreground;
+    @apply transition-all duration-300 hover:bg-muted;
+    @apply active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}
+
+@layer utilities {
+  /* Gradient Radial */
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Custom Pulse Animation - Slower */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+    /* Slow Pulse Animation - for orbs */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
