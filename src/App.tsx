@@ -65,18 +65,7 @@ const App = () => (
                   />
                   <Route path="/student-loan" element={<StudentLoan />} />
                 </Route>
-                {/* Student Portal Routes */}
-                <Route path="/student" element={<StudentLayout />}>
-                  <Route path="dashboard" element={<Dashboard />} />
-                  <Route path="applications" element={<Applications />} />
-                  <Route path="compare" element={<Compare />} />
-                  <Route path="documents" element={<Documents />} />
-                  <Route path="notifications" element={<Notifications />} />
-                  <Route path="profile" element={<Profile />} />
 
-                  {/* Redirect /student to /student/dashboard */}
-                  <Route index element={<Navigate to="dashboard" replace />} />
-                </Route>
                 {/* Edu Loan Guide Routes with Header/Footer Layout */}
                 <Route element={<HomeLayout />}>
                   <Route path="/loan-offers" element={<LoanList />} />
